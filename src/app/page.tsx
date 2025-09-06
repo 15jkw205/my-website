@@ -26,7 +26,7 @@ export default function Home() {
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
-            Hi, I'm <span className={styles.highlight}>Jakob West</span>
+            Howdy! My name is <span className={styles.highlight}>Jakob West</span>
           </h1>
           <p className={styles.heroSubtitle}>
             From Data Analytics and Systems Engineering student to DevOps Engineer
@@ -73,7 +73,7 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className={styles.contact}>
         <div className={styles.container}>
-          <h2>Let's Connect</h2>
+          <h2>Want to connect?</h2>
           <p>Ready to work together or just want to say hello?</p>
           <a href="mailto:jwest21@uccs.edu" className={styles.btnPrimary}>
             Get In Touch
