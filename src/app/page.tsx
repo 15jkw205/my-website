@@ -8,8 +8,8 @@ export default function Home() {
         <div className={styles.navContainer}>
           <div className={styles.logo}>Jakob West</div>
           <div className={styles.navLinks}>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
+            <a href="#technical">Technical</a>
+            <a href="#christianity">Christianity</a>
             <a href="#contact">Contact</a>
           </div>
         </div>
@@ -28,64 +28,82 @@ export default function Home() {
             Building modern web applications with cutting-edge technologies
           </p>
           <div className={styles.heroButtons}>
-            <a href="#projects" className={styles.btnPrimary}>View My Work</a>
+            <a href="#technical" className={styles.btnPrimary}>View My Work</a>
             <a href="#contact" className={styles.btnSecondary}>Get In Touch</a>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className={styles.about}>
-        <h2>About Me</h2>
-        <p>
-          I'm a Data Analytics and Systems Engineering student transitioning into DevOps Engineering. 
-          I'm passionate about building scalable infrastructure, automating workflows, and creating 
-          efficient deployment pipelines. When I'm not coding, you can find me exploring new technologies 
-          and learning about cloud architecture.
-        </p>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className={styles.projects}>
-        <h2>Featured Projects</h2>
+      {/* Technical Section */}
+      <section id="technical" className={styles.projects}>
+        <h2>Technical Projects</h2>
         <div className={styles.projectGrid}>
           <div className={styles.projectCard}>
             <h3>Portfolio Website</h3>
-            <p>Modern portfolio built with Next.js and Cloudflare Pages</p>
+            <p>Modern portfolio built with Next.js and deployed on Cloudflare Pages with continuous deployment from GitHub</p>
             <div className={styles.techStack}>
               <span>Next.js</span>
+              <span>TypeScript</span>
               <span>Cloudflare</span>
-              <span>CSS</span>
+              <span>CSS Modules</span>
             </div>
           </div>
           
           <div className={styles.projectCard}>
-            <h3>Project Name</h3>
-            <p>Description of your project goes here. What problem does it solve?</p>
+            <h3>DevOps Pipeline</h3>
+            <p>Automated CI/CD pipeline for seamless deployment and testing</p>
             <div className={styles.techStack}>
-              <span>Technology</span>
-              <span>Technology</span>
+              <span>GitHub Actions</span>
+              <span>Docker</span>
+              <span>Node.js</span>
             </div>
           </div>
 
           <div className={styles.projectCard}>
-            <h3>Another Project</h3>
-            <p>Add more projects to showcase your work and skills</p>
+            <h3>Infrastructure as Code</h3>
+            <p>Cloud infrastructure management using modern IaC practices</p>
             <div className={styles.techStack}>
-              <span>Tech</span>
-              <span>Stack</span>
+              <span>Terraform</span>
+              <span>AWS</span>
+              <span>Kubernetes</span>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Christianity Section */}
+      <section id="christianity" className={styles.about}>
+        <h2>Christianity</h2>
+        <p>
+          My faith in Jesus Christ is the foundation of who I am and how I approach life. 
+          As a follower of Christ, I strive to live with integrity, serve others, and honor God 
+          in everything I do - including my work in technology.
+        </p>
+        <p style={{ marginTop: '1.5rem' }}>
+          I believe that excellence in my craft is a way to glorify God, and that the skills 
+          He's given me are meant to be used to serve others and make a positive impact in the world.
+        </p>
+        <blockquote style={{ 
+          borderLeft: '4px solid var(--orange-primary)', 
+          paddingLeft: '1.5rem', 
+          marginTop: '2rem',
+          fontStyle: 'italic',
+          color: 'var(--black-secondary)'
+        }}>
+          "Whatever you do, work at it with all your heart, as working for the Lord, not for human masters." 
+          <br />- Colossians 3:23
+        </blockquote>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className={styles.contact}>
-        <h2>Want to connect?</h2>
-        <p>Ready to work together or just want to say hello?</p>
-        <a href="mailto:jwest21@uccs.edu" className={styles.btnPrimary}>
-          Get In Touch
-        </a>
+        <h2>Let's Connect</h2>
+        <p>Whether you want to collaborate on a project, discuss opportunities, or just say hello - I'd love to hear from you!</p>
+        <div style={{ marginTop: '2rem' }}>
+          <a href="mailto:jwest21@uccs.edu" className={styles.btnPrimary}>
+            Send Me an Email
+          </a>
+        </div>
       </section>
     </div>
   )
