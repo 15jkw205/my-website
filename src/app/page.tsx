@@ -1,15 +1,8 @@
-import Head from 'next/head'
 import styles from './page.module.css'
 
 export default function Home() {
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Jakob West - Developer</title>
-	<meta name="description" content="My Portfolio - Beginner DevOps Engineer" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       {/* Navigation */}
       <nav className={styles.nav}>
         <div className={styles.navContainer}>
@@ -43,42 +36,56 @@ export default function Home() {
 
       {/* About Section */}
       <section id="about" className={styles.about}>
-        <div className={styles.container}>
-          <h2>About Me</h2>
-          <p>
-            lol
-          </p>
-        </div>
+        <h2>About Me</h2>
+        <p>
+          I'm a Data Analytics and Systems Engineering student transitioning into DevOps Engineering. 
+          I'm passionate about building scalable infrastructure, automating workflows, and creating 
+          efficient deployment pipelines. When I'm not coding, you can find me exploring new technologies 
+          and learning about cloud architecture.
+        </p>
       </section>
 
       {/* Projects Section */}
       <section id="projects" className={styles.projects}>
-        <div className={styles.container}>
-          <h2>Featured Projects</h2>
-          <div className={styles.projectGrid}>
-            <div className={styles.projectCard}>
-              <h3>Portfolio Website</h3>
-              <p>Modern portfolio built with Next.js and Cloudflare Pages</p>
-              <div className={styles.techStack}>
-                <span>Next.js</span>
-                <span>Cloudflare</span>
-                <span>CSS</span>
-              </div>
+        <h2>Featured Projects</h2>
+        <div className={styles.projectGrid}>
+          <div className={styles.projectCard}>
+            <h3>Portfolio Website</h3>
+            <p>Modern portfolio built with Next.js and Cloudflare Pages</p>
+            <div className={styles.techStack}>
+              <span>Next.js</span>
+              <span>Cloudflare</span>
+              <span>CSS</span>
             </div>
-            {/* Add more project cards as needed */}
+          </div>
+          
+          <div className={styles.projectCard}>
+            <h3>Project Name</h3>
+            <p>Description of your project goes here. What problem does it solve?</p>
+            <div className={styles.techStack}>
+              <span>Technology</span>
+              <span>Technology</span>
+            </div>
+          </div>
+
+          <div className={styles.projectCard}>
+            <h3>Another Project</h3>
+            <p>Add more projects to showcase your work and skills</p>
+            <div className={styles.techStack}>
+              <span>Tech</span>
+              <span>Stack</span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
       <section id="contact" className={styles.contact}>
-        <div className={styles.container}>
-          <h2>Want to connect?</h2>
-          <p>Ready to work together or just want to say hello?</p>
-          <a href="mailto:jwest21@uccs.edu" className={styles.btnPrimary}>
-            Get In Touch
-          </a>
-        </div>
+        <h2>Want to connect?</h2>
+        <p>Ready to work together or just want to say hello?</p>
+        <a href="mailto:jwest21@uccs.edu" className={styles.btnPrimary}>
+          Get In Touch
+        </a>
       </section>
     </div>
   )

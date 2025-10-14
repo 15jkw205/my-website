@@ -3,11 +3,19 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #ff6600;  /* Your orange accent */
+  --primary-dark: #e55a00;  /* Darker orange for hover states */
+  --secondary: #1a1a1a;  /* Near black */
+  --card-bg: #fafafa;
+  --border: #e5e5e5;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary: var(--secondary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -16,11 +24,14 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --card-bg: #1a1a1a;
+    --border: #2a2a2a;
+    /* Orange stays vibrant in dark mode */
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
 }
