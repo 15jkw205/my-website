@@ -14,7 +14,19 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:8080](http://localhost:8080) with your browser to see the result.
+
+> **Note:** This project is configured to run on port **8080** instead of the default 3000.
+
+### Managing Development Ports
+
+If you need to clear any processes running on development ports, use the helper script:
+
+```bash
+./scripts/kill-dev-ports.sh
+```
+
+This will check and kill processes on ports: 3000, 3001, 4000, 5000, 8000, and 8080.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

@@ -43,6 +43,7 @@
 .navLinks {
   display: flex;
   gap: 2rem;
+  align-items: center;
 }
 
 .navLinks a {
@@ -54,6 +55,28 @@
 
 .navLinks a:hover {
   color: var(--orange-primary);
+}
+
+.contactIcons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid var(--black-secondary);
+}
+
+.iconLink {
+  color: var(--black-primary);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconLink:hover {
+  color: var(--orange-primary);
+  transform: translateY(-2px);
 }
 
 /* Hero Section */
