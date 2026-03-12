@@ -1,48 +1,151 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# jakobwest.dev
 
-## Getting Started
+Personal portfolio site for Jakob West — software engineer, tech enthusiast, and Colorado outdoorsman.
 
-First, run the development server:
+Built with **Next.js 15** (static export), deployed via **Cloudflare Pages**, CI/CD via **GitHub Actions**.
+
+---
+
+## Stack
+
+| Layer | Tech |
+|---|---|
+| Framework | Next.js 15 (App Router, static export) |
+| Styling | CSS Modules |
+| Deployment | Cloudflare Pages |
+| CI/CD | GitHub Actions |
+| Language | TypeScript |
+
+---
+
+## Project Structure
+
+```
+my-website/
+├── src/
+│   └── app/
+│       ├── page.tsx          # One-pager (Hero, About, Projects, Contact)
+│       ├── page.module.css   # All styles + CSS variables
+│       ├── layout.tsx        # Root layout + metadata + SEO
+│       └── globals.css       # CSS reset
+├── public/
+│   ├── _headers              # Cloudflare Pages security + cache headers
+│   ├── robots.txt            # Search engine crawler config
+│   └── sitemap.xml           # SEO sitemap
+├── .github/
+│   └── workflows/
+│       └── deploy.yml        # CI/CD pipeline
+├── next.config.ts            # Static export config
+├── tsconfig.json
+└── package.json
+```
+
+---
+
+## Local Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Start dev server (http://localhost:8080)
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:8080](http://localhost:8080) with your browser to see the result.
+---
 
-> **Note:** This project is configured to run on port **8080** instead of the default 3000.
-
-### Managing Development Ports
-
-If you need to clear any processes running on development ports, use the helper script:
+## Build
 
 ```bash
-./scripts/kill-dev-ports.sh
+# Type-check + static export to /out
+npm run build
 ```
 
-This will check and kill processes on ports: 3000, 3001, 4000, 5000, 8000, and 8080.
+The `out/` directory is the production build output. It is git-ignored and should never be committed.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment
 
-## Learn More
+Deployments are fully automated via GitHub Actions (`.github/workflows/deploy.yml`):
 
-To learn more about Next.js, take a look at the following resources:
+| Trigger | Action |
+|---|---|
+| Push to any branch or PR to `main` | Lint + build check |
+| Push to `main` | Lint + build + deploy to Cloudflare Pages |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Required GitHub Secrets
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Go to **Settings > Secrets and variables > Actions** and add:
 
-## Deploy on Vercel
+| Secret | Where to find it |
+|---|---|
+| `CLOUDFLARE_API_TOKEN` | Cloudflare dashboard > My Profile > API Tokens > Create Token (use "Cloudflare Pages: Edit" template) |
+| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare dashboard > right sidebar on the Overview page |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Manual Deploy (if needed)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+npx wrangler pages deploy out --project-name=my-website
+```
+
+---
+
+## Projects Section
+
+Projects are fetched live from the GitHub API at runtime:
+
+```
+https://api.github.com/users/15jkw205/repos?sort=updated&per_page=20
+```
+
+No manual updates needed. Public repos with descriptions are displayed automatically, sorted by most recently updated.
+
+---
+
+## Theming
+
+All colors are defined as CSS variables at the top of `page.module.css`:
+
+```css
+--orange: #ff6b35;
+--black: #0a0a0a;
+--surface: #111111;
+--text: #f0ece6;
+```
+
+Adjust these to retheme the entire site instantly.
+
+---
+
+## Security Headers
+
+Configured in `public/_headers` for Cloudflare Pages:
+
+- HSTS with preload (2 year max-age)
+- Content Security Policy (allows Google Fonts + GitHub API)
+- X-Frame-Options, X-Content-Type-Options, X-XSS-Protection
+- Permissions-Policy (blocks camera, microphone, geolocation)
+- Static assets cached for 1 year, HTML always fresh
+
+---
+
+## Git Workflow
+
+```bash
+# Work on development branch
+git checkout development
+
+# After testing locally (npm run dev + npm run build)
+git add .
+git commit -m "your message"
+git push origin development
+
+# When ready to go live, merge to main
+git checkout main
+git merge development
+git push origin main
+```
+
+Pushing to `main` triggers the full CI/CD pipeline and deploys to jakobwest.dev automatically.
